@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api
+  labels:
+    app: flask-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-api
+  template:
+    metadata:
+      labels:
+        app: flask-api
+    spec:
+      containers:
+        - name: flask-api
+          image: marceloluiz1/app-example
+          ports:
+            - containerPort: 5000
+          # livenessProbe:
+          #   httpGet:
+          #     path: "/api/one"
+          #     port: 5000
+          #   initialDelaySeconds: 90
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   failureThreshold: 5
+          # readinessProbe:
+          #   httpGet:
+          #     path: "/api/one"
+          #     port: 5000
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   failureThreshold: 3

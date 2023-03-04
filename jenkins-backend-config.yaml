@@ -1,0 +1,36 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: jenkins-server
+spec:
+  healthCheck:
+    checkIntervalSec: 60
+    timeoutSec: 30
+    port: 8080
+    type: TCP
+    requestPath: /login
+#   # securityPolicy:
+#   #   name: allow-my-ip
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-server
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80":"jenkins-server"}}'
+    cloud.google.com/neg: '{"ingress": true}'
+    # cloud.google.com/backend-config: '{"default": "jenkins-server"}'
+    # cloud.google.com/neg: '{"exposed_ports": {"80":{}}}'
+  labels:
+    app: jenkins-server
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  - name: jnlp
+    port: 50000
+    targetPort: 50000
+  selector:
+    app: jenkins-server

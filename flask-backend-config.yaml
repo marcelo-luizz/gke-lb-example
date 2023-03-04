@@ -1,0 +1,79 @@
+# Define a ackendConfig object
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: flask-api
+spec:
+  healthCheck:
+    checkIntervalSec: 60
+    timeoutSec: 30
+    port: 5000
+    type: HTTP
+    requestPath: /
+#   # securityPolicy:
+#   #   name: allow-my-ip
+---
+# #Annotate the service with the object above
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-api
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80":"flask-api"}}'
+    cloud.google.com/neg: '{"ingress": true}'
+    # cloud.google.com/neg: '{"exposed_ports": {}}'
+    # cloud.google.com/backend-config: '{"default": "flask-api"}'
+  labels:
+    app: flask-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+    name: http 
+  selector:
+    app: flask-api
+
+# ---
+# apiVersion: networking.gke.io/v1beta1
+# kind: FrontendConfig
+# metadata:
+#   name: my-frontend-config
+# spec:
+#   redirectToHttps:
+#     enabled: true
+#     responseCodeName: RESPONSE_CODE
+# ---
+
+# # Define a ackendConfig object
+# apiVersion: cloud.google.com/v1
+# kind: BackendConfig
+# metadata:
+#   name: flask-api-example
+# spec:
+#   healthCheck:
+#     checkIntervalSec: 15
+#     port: 80
+#     type: TCP
+#     requestPath: /api/one
+#   # securityPolicy:
+#   #   name: allow-my-ip
+# ---
+# #Annotate the service with the object above
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: flask-api-example
+#   annotations:
+#     # cloud.google.com/backend-config: '{"ports": {"80":"flask-api-example"}}'
+#     # cloud.google.com/neg: '{"ingress": true}'
+#     # cloud.google.com/neg: '{"exposed_ports": {}}'
+#     # cloud.google.com/backend-config: '{"default": "http-flask-api"}'  
+# spec:
+#   ports:
+#   - port: 80
+#     targetPort: 5000
+#     name: http 
+#   selector:
+#     app: flask-api-example
+#   type: ClusterIP
