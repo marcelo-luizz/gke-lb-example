@@ -17,8 +17,8 @@ spec:
   #     port:
   #       number: 80
   rules:
-  # - host: jenkins.devopsbrothers.fun
-  - http:
+  - host: jenkins.devopsbrothers.fun
+    http:
       paths:
       - path: /*
         pathType: ImplementationSpecific
@@ -28,7 +28,9 @@ spec:
             port:
               number: 8080
         
-      # - host: api.devopsbrothers.fun
+  - host: api.devopsbrothers.fun
+    http:
+      paths:
       - path: /api/*
         pathType: ImplementationSpecific
         backend:
