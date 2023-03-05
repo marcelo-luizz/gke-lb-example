@@ -5,3 +5,7 @@ configuration-as-code:1569.vb_72405b_80249
 google-kubernetes-engine:0.8.7
 workflow-cps-global-lib:609.vd95673f149b_b
 workflow-multibranch:716.vc692a_e52371b_
+git:4.11.3
+remote-file:1.23
+multibranch-scan-webhook-trigger:1.0.9
+ant

@@ -7,6 +7,7 @@ ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 # # Copy plugins file to container
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
+COPY jenkins-config.yaml /var/jenkins_home/casc_configs/jenkins-config.yaml
 # # Install plugins
 # RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
