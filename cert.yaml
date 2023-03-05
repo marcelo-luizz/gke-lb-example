@@ -6,3 +6,7 @@ spec:
   domains:
     - jenkins.devopsbrothers.fun
     - api.devopsbrothers.fun
+
+    # gcloud compute ssl-policies create gke-ingress-ssl-policy \
+    # --profile MODERN \
+    # --min-tls-version 1.2
