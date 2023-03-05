@@ -3,5 +3,10 @@ kind: FrontendConfig
 metadata:
   name: frontend-config
 spec:
+  sslPolicy: gke-ingress-ssl-policy
   redirectToHttps:
     enabled: true
+
+    # gcloud compute ssl-policies create gke-ingress-ssl-policy \
+    # --profile MODERN \
+    # --min-tls-version 1.2
