@@ -63,7 +63,7 @@ spec:
         - name: tomcat
           image: tomcat
           ports:
-            - containerPort: 80
+            - containerPort: 8080
             
             
           # livenessProbe:
