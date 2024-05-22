@@ -36,3 +36,13 @@ spec:
             port:
               number: 80
 
+  - host: nginx.devopslabs.cloud
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: nginx
+            port:
+              number: 80 
