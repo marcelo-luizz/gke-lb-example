@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: ingress-ip-new # gcloud compute addresses create --global ingress-ip
-    networking.gke.io/managed-certificates: dev-cert
+    networking.gke.io/managed-certificates: "dev-cert, dev-cert-nginx"
     networking.gke.io/v1beta1.FrontendConfig: frontend-config
 spec:
   # defaultBackend:
