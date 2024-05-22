@@ -46,3 +46,14 @@ spec:
             name: nginx
             port:
               number: 80 
+              
+  - host: tomcat.devopslabs.cloud
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: tomcat
+            port:
+              number: 80             
