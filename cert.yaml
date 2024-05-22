@@ -4,5 +4,5 @@ metadata:
   name: dev-cert
 spec:
   domains:
-    - jenkins.devopsbrothers.fun
-    - api.devopsbrothers.fun
+    - jenkins.devopslabs.cloud
+    - api.devopslabs.cloud
