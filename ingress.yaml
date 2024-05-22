@@ -14,7 +14,7 @@ spec:
   #     port:
   #       number: 80
   rules:
-  - host: jenkins.devopsbrothers.fun
+  - host: jenkins.devopslabs.cloud
     http:
       paths:
       - path: /*
@@ -25,7 +25,7 @@ spec:
             port:
               number: 8080
         
-  - host: api.devopsbrothers.fun
+  - host: api.devopslabs.cloud
     http:
       paths:
       - path: /api/*
